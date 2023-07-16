@@ -1,11 +1,14 @@
-import Card from '../UI/Card';
-import classes from './ProductItem.module.css';
+import Card from "../UI/Card";
+import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { id, title, price, description } = props;
 
+  const AddCartHandler = (e) => {
+    props.onAddCartHandler(e.target.id);
+  };
   return (
-    <li className={classes.item}>
+    <li key={id} className={classes.item}>
       <Card>
         <header>
           <h3>{title}</h3>
@@ -13,7 +16,9 @@ const ProductItem = (props) => {
         </header>
         <p>{description}</p>
         <div className={classes.actions}>
-          <button>Add to Cart</button>
+          <button id={id} onClick={AddCartHandler}>
+            Add to Cart
+          </button>
         </div>
       </Card>
     </li>

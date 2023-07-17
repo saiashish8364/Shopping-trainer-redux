@@ -118,7 +118,7 @@ export const loadCartData = () => {
       const cartData = await loadData();
       dispatch(
         cartSlice.actions.replaceCart({
-          cItems: cartData.items || [],
+          cItems: cartData.cItems || [],
           totalQuantity: cartData.totalQuantity,
         })
       );
